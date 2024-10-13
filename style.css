@@ -1,9 +1,11 @@
 body {
-    color: #ffffff;
+    color: #ffffff; /* Testo bianco */
 }
 .box {
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s; /* Transizione fluida per l'hover */
+    border-radius: 0.5rem; /* Arrotonda gli angoli */
 }
 .box:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Ingrandisce il box al passaggio del mouse */
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2); /* Aggiunge ombra al box */
 }
