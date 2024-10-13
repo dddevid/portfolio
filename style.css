@@ -1,0 +1,9 @@
+body {
+    color: #ffffff;
+}
+.box {
+    transition: transform 0.2s;
+}
+.box:hover {
+    transform: scale(1.05);
+}
