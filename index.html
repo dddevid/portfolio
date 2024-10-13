@@ -1,65 +1,162 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafoglio di Devid</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://code.iconify.design/1/1.0.0/iconify.min.js"></script>
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+        .card {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            transition: box-shadow 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 0 11px rgba(33,33,33,.2);
+        }
+        .card-content {
+            height: 100%;
+        }
+        .title, .subtitle {
+            color: #ffffff;
+        }
+        .project-link {
+            color: #3273dc;
+        }
+        .project-link:hover {
+            color: #4a89dc;
+        }
+        .footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+    </style>
 </head>
-<body class="has-background-black">
-    <div class="container has-text-centered">
-        <header class="my-5">
-            <h1 class="title has-text-white">Il mio Portafoglio</h1>
-            <p class="subtitle has-text-grey-light">Benvenuto nel mio portfolio! Sono uno sviluppatore con esperienza in vari progetti.</p>
-        </header>
+<body>
+    <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+                <h1 class="title is-4">My Portfolio</h1>
+            </a>
+        </div>
+    </nav>
 
-        <section class="my-5">
-            <h2 class="title is-3 has-text-white">Informazioni</h2>
-            <p class="has-text-light">Mi chiamo Devid, sono un appassionato di programmazione e sviluppo software. Qui ci sono alcuni dei miei progetti.</p>
-            <div class="social-icons" id="social-icons">
-                <!-- Le icone saranno caricate qui -->
-            </div>
-        </section>
-
-        <section class="my-5">
-            <h2 class="title is-3 has-text-white">Progetti</h2>
+    <section class="section">
+        <div class="container">
             <div class="columns is-multiline">
                 <div class="column is-one-third">
-                    <div class="box has-background-dark">
-                        <h3 class="title is-4" id="project-icon-1">Progetto 1</h3>
-                        <p class="has-text-light">Descrizione del Progetto 1.</p>
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title is-4">
+                                <a href="https://github.com/dddevid/Roblox-Freezing-Fix" target="_blank" class="project-link">Roblox-Freezing-Fix</a>
+                            </p>
+                            <p class="subtitle is-6">Fix freezing issues in Roblox.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="column is-one-third">
-                    <div class="box has-background-dark">
-                        <h3 class="title is-4" id="project-icon-2">Progetto 2</h3>
-                        <p class="has-text-light">Descrizione del Progetto 2.</p>
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title is-4">
+                                <a href="https://github.com/dddevid/F-iOS" target="_blank" class="project-link">F-iOS</a>
+                            </p>
+                            <p class="subtitle is-6">F-Droid like library for Altstore/Scarlett.</p>
+                        </div>
                     </div>
                 </div>
                 <div class="column is-one-third">
-                    <div class="box has-background-dark">
-                        <h3 class="title is-4" id="project-icon-3">Progetto 3</h3>
-                        <p class="has-text-light">Descrizione del Progetto 3.</p>
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title is-4">
+                                <a href="https://github.com/dddevid/OnlineMusicPlayer" target="_blank" class="project-link">OnlineMusicPlayer</a>
+                            </p>
+                            <p class="subtitle is-6">A web-based music player to play music online.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title is-4">
+                                <a href="https://github.com/dddevid/YTDLPY" target="_blank" class="project-link">YTDLPY</a>
+                            </p>
+                            <p class="subtitle is-6">A Python wrapper for youtube-dl, making it easier to download videos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title is-4">
+                                <a href="https://github.com/dddevid/FreeProxylist" target="_blank" class="project-link">FreeProxylist</a>
+                            </p>
+                            <p class="subtitle is-6">A collection of free proxy servers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title is-4">
+                                <a href="https://github.com/dddevid/FCleaner" target="_blank" class="project-link">FCleaner</a>
+                            </p>
+                            <p class="subtitle is-6">A tool for cleaning and optimizing files on your system.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title is-4">
+                                <a href="https://github.com/dddevid/SD-Copier" target="_blank" class="project-link">SD-Copier</a>
+                            </p>
+                            <p class="subtitle is-6">A utility for copying files to SD cards efficiently.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title is-4">
+                                <a href="https://github.com/dddevid/yolov5-fix" target="_blank" class="project-link">yolov5-fix</a>
+                            </p>
+                            <p class="subtitle is-6">A fix for common issues in YOLOv5 implementations.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="my-5">
-            <h2 class="title is-3 has-text-white">Competenze</h2>
-            <ul class="has-text-light" id="skills-list">
-                <!-- Le competenze e icone saranno caricate qui -->
-            </ul>
-        </section>
-    </div>
-
-    <footer class="footer has-background-grey-dark has-text-white">
+    <footer class="footer">
         <div class="content has-text-centered">
-            <p>&copy; 2024 Devid. Tutti i diritti riservati.</p>
+            <p>&copy; 2024 My Portfolio. All rights reserved.</p>
         </div>
     </footer>
-    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Funzione per equalizzare l'altezza delle carte
+            const equalizeCardHeights = () => {
+                const cards = document.querySelectorAll('.card-content');
+                let maxHeight = 0;
+                cards.forEach(card => {
+                    card.style.height = 'auto';
+                    maxHeight = Math.max(maxHeight, card.offsetHeight);
+                });
+                cards.forEach(card => {
+                    card.style.height = `${maxHeight}px`;
+                });
+            };
+
+            // Esegui la funzione al caricamento e al ridimensionamento della finestra
+            equalizeCardHeights();
+            window.addEventListener('resize', equalizeCardHeights);
+        });
+    </script>
 </body>
 </html>
