@@ -6,88 +6,60 @@
     <title>Portafoglio di Devid</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://code.iconify.design/1/1.0.0/iconify.min.js"></script> <!-- Aggiunta della libreria Iconify -->
+    <script src="https://code.iconify.design/1/1.0.0/iconify.min.js"></script>
 </head>
 <body class="has-background-black">
     <div class="container has-text-centered">
         <header class="my-5">
             <h1 class="title has-text-white">Il mio Portafoglio</h1>
+            <p class="subtitle has-text-grey-light">Benvenuto nel mio portfolio! Sono uno sviluppatore con esperienza in vari progetti.</p>
         </header>
-        <main class="columns is-multiline">
-            <div class="column is-one-third">
-                <div class="box has-background-dark">
-                    <h3 class="title is-4">
-                        <span class="iconify" data-icon="mdi:gamepad-variant" data-inline="false"></span>
-                        <a href="https://github.com/dddevid/Roblox-Freezing-Fix" target="_blank" class="has-text-info">Roblox-Freezing-Fix</a>
-                    </h3>
-                    <p class="has-text-light">Fix freezing issues in Roblox.</p>
+
+        <section class="my-5">
+            <h2 class="title is-3 has-text-white">Informazioni</h2>
+            <p class="has-text-light">Mi chiamo Devid, sono un appassionato di programmazione e sviluppo software. Qui ci sono alcuni dei miei progetti.</p>
+            <div class="social-icons" id="social-icons">
+                <!-- Le icone saranno caricate qui -->
+            </div>
+        </section>
+
+        <section class="my-5">
+            <h2 class="title is-3 has-text-white">Progetti</h2>
+            <div class="columns is-multiline">
+                <div class="column is-one-third">
+                    <div class="box has-background-dark">
+                        <h3 class="title is-4" id="project-icon-1">Progetto 1</h3>
+                        <p class="has-text-light">Descrizione del Progetto 1.</p>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="box has-background-dark">
+                        <h3 class="title is-4" id="project-icon-2">Progetto 2</h3>
+                        <p class="has-text-light">Descrizione del Progetto 2.</p>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="box has-background-dark">
+                        <h3 class="title is-4" id="project-icon-3">Progetto 3</h3>
+                        <p class="has-text-light">Descrizione del Progetto 3.</p>
+                    </div>
                 </div>
             </div>
-            <div class="column is-one-third">
-                <div class="box has-background-dark">
-                    <h3 class="title is-4">
-                        <span class="iconify" data-icon="mdi:app-store" data-inline="false"></span>
-                        <a href="https://github.com/dddevid/F-iOS" target="_blank" class="has-text-info">F-iOS</a>
-                    </h3>
-                    <p class="has-text-light">F-Droid like library for Altstore/Scarlett.</p>
-                </div>
-            </div>
-            <div class="column is-one-third">
-                <div class="box has-background-dark">
-                    <h3 class="title is-4">
-                        <span class="iconify" data-icon="mdi:music" data-inline="false"></span>
-                        <a href="https://github.com/dddevid/OnlineMusicPlayer" target="_blank" class="has-text-info">OnlineMusicPlayer</a>
-                    </h3>
-                    <p class="has-text-light">A web-based music player to play music online.</p>
-                </div>
-            </div>
-            <div class="column is-one-third">
-                <div class="box has-background-dark">
-                    <h3 class="title is-4">
-                        <span class="iconify" data-icon="mdi:download" data-inline="false"></span>
-                        <a href="https://github.com/dddevid/YTDLPY" target="_blank" class="has-text-info">YTDLPY</a>
-                    </h3>
-                    <p class="has-text-light">A Python wrapper for youtube-dl, making it easier to download videos.</p>
-                </div>
-            </div>
-            <div class="column is-one-third">
-                <div class="box has-background-dark">
-                    <h3 class="title is-4">
-                        <span class="iconify" data-icon="mdi:proxy" data-inline="false"></span>
-                        <a href="https://github.com/dddevid/FreeProxylist" target="_blank" class="has-text-info">FreeProxylist</a>
-                    </h3>
-                    <p class="has-text-light">A collection of free proxy servers.</p>
-                </div>
-            </div>
-            <div class="column is-one-third">
-                <div class="box has-background-dark">
-                    <h3 class="title is-4">
-                        <span class="iconify" data-icon="mdi:trash-can" data-inline="false"></span>
-                        <a href="https://github.com/dddevid/FCleaner" target="_blank" class="has-text-info">FCleaner</a>
-                    </h3>
-                    <p class="has-text-light">A tool for cleaning and optimizing files on your system.</p>
-                </div>
-            </div>
-            <div class="column is-one-third">
-                <div class="box has-background-dark">
-                    <h3 class="title is-4">
-                        <span class="iconify" data-icon="mdi:sd-card" data-inline="false"></span>
-                        <a href="https://github.com/dddevid/SD-Copier" target="_blank" class="has-text-info">SD-Copier</a>
-                    </h3>
-                    <p class="has-text-light">A utility for copying files to SD cards efficiently.</p>
-                </div>
-            </div>
-            <div class="column is-one-third">
-                <div class="box has-background-dark">
-                    <h3 class="title is-4">
-                        <span class="iconify" data-icon="mdi:fix" data-inline="false"></span>
-                        <a href="https://github.com/dddevid/yolov5-fix" target="_blank" class="has-text-info">yolov5-fix</a>
-                    </h3>
-                    <p class="has-text-light">A fix for common issues in YOLOv5 implementations.</p>
-                </div>
-            </div>
-        </main>
+        </section>
+
+        <section class="my-5">
+            <h2 class="title is-3 has-text-white">Competenze</h2>
+            <ul class="has-text-light" id="skills-list">
+                <!-- Le competenze e icone saranno caricate qui -->
+            </ul>
+        </section>
     </div>
+
+    <footer class="footer has-background-grey-dark has-text-white">
+        <div class="content has-text-centered">
+            <p>&copy; 2024 Devid. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
