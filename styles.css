@@ -1,100 +1,38 @@
-/* General styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+// English and Italian translations
+const translations = {
+    en: {
+        about: 'About Me',
+        projects: 'Projects',
+        skills: 'Skills',
+        contact: 'Contact',
+        title: 'Devid\'s Portfolio',
+        welcome: 'Welcome to my portfolio showcasing my work and skills!',
+        'about-text': 'Hello! I\'m Devid, a developer passionate about solving problems and building solutions in Python, Node.js, and beyond...'
+    },
+    it: {
+        about: 'Chi Sono',
+        projects: 'Progetti',
+        skills: 'Competenze',
+        contact: 'Contatti',
+        title: 'Il Portfolio di Devid',
+        welcome: 'Benvenuto nel mio portfolio che mostra il mio lavoro e le mie competenze!',
+        'about-text': 'Ciao! Sono Devid, uno sviluppatore appassionato nel risolvere problemi e costruire soluzioni in Python, Node.js, e oltre...'
+    }
+};
+
+// Language toggle functionality
+document.getElementById('toggle-lang').addEventListener('click', () => {
+    const currentLang = document.documentElement.lang === 'en' ? 'it' : 'en';
+    document.documentElement.lang = currentLang;
+    applyTranslations(currentLang);
+});
+
+function applyTranslations(lang) {
+    document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.getAttribute('data-key');
+        el.textContent = translations[lang][key];
+    });
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #ecf0f1; /* Light grey background */
-    color: #2c3e50; /* Dark blue text */
-}
-
-header {
-    background-color: #2c3e50; /* Dark blue */
-    color: #ecf0f1; /* Light grey text */
-    padding: 20px 0;
-    text-align: center;
-}
-
-header nav ul {
-    list-style-type: none;
-}
-
-header nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-header nav ul li a {
-    color: #ecf0f1;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-header nav ul li a:hover {
-    color: #f39c12; /* Bright orange on hover */
-}
-
-.header-content h1 {
-    margin-top: 10px;
-    font-size: 2.5rem;
-}
-
-.header-content p {
-    margin: 10px 0;
-}
-
-button#toggle-lang {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #f39c12; /* Bright orange */
-    border: none;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-button#toggle-lang:hover {
-    transform: scale(1.1);
-}
-
-.section {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.project {
-    background-color: #fff; /* White background for project cards */
-    margin: 20px auto; /* Center the project cards */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px; /* Set a max width for project cards */
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.project:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-}
-
-.project a {
-    color: #3498db; /* Blue link color */
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.project a:hover {
-    text-decoration: underline;
-    color: #f39c12; /* Bright orange on hover */
-}
-
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: #2c3e50; /* Dark blue */
-    color: #ecf0f1; /* Light grey text */
-}
+// Apply default language
+applyTranslations('en');
