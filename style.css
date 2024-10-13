@@ -1,11 +1,36 @@
+/* style.css */
+
 body {
-    color: #ffffff; /* Testo bianco */
+    font-family: 'Arial', sans-serif;
 }
+
+.social-icons {
+    margin: 20px 0;
+}
+
+.social-icons a {
+    font-size: 30px;
+    margin: 0 10px;
+    color: #00d1b2; /* Colore dell'icona */
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #00b89c; /* Colore dell'icona al passaggio del mouse */
+}
+
 .box {
-    transition: transform 0.2s, box-shadow 0.2s; /* Transizione fluida per l'hover */
-    border-radius: 0.5rem; /* Arrotonda gli angoli */
+    transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .box:hover {
-    transform: scale(1.05); /* Ingrandisce il box al passaggio del mouse */
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2); /* Aggiunge ombra al box */
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.footer {
+    padding: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
