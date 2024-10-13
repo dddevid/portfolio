@@ -5,64 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Devid's Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="main.js" defer></script> <!-- Include JavaScript -->
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800">
 
-    <header>
+    <header class="bg-gray-800 text-white text-center p-5">
         <nav>
-            <ul>
-                <li><a href="#about" data-key="about">About Me</a></li>
-                <li><a href="#projects" data-key="projects">Projects</a></li>
-                <li><a href="#skills" data-key="skills">Skills</a></li>
-                <li><a href="#contact" data-key="contact">Contact</a></li>
+            <ul class="flex justify-center space-x-5">
+                <li><a href="#about" class="hover:text-orange-400">About Me</a></li>
+                <li><a href="#projects" class="hover:text-orange-400">Projects</a></li>
+                <li><a href="#skills" class="hover:text-orange-400">Skills</a></li>
+                <li><a href="#contact" class="hover:text-orange-400">Contact</a></li>
             </ul>
         </nav>
-        <div class="header-content">
-            <h1 data-key="title">Devid's Portfolio</h1>
-            <p data-key="welcome">Welcome to my portfolio showcasing my work and skills!</p>
+        <div class="mt-5">
+            <h1 class="text-4xl font-bold">Devid's Portfolio</h1>
+            <p class="mt-2">Welcome to my portfolio showcasing my work and skills!</p>
         </div>
-        <button id="toggle-lang">English / Italiano</button>
+        <button id="toggle-lang" class="mt-5 px-4 py-2 bg-orange-400 text-white rounded hover:bg-orange-500 transition transform hover:scale-105">English / Italiano</button>
     </header>
 
-    <section id="about" class="section">
-        <h2 data-key="about">About Me</h2>
-        <p data-key="about-text">Hello! I'm Devid, a developer passionate about solving problems and building solutions in Python, Node.js, and beyond...</p>
+    <section id="about" class="py-10 text-center">
+        <h2 class="text-3xl font-semibold mb-4">About Me</h2>
+        <p class="max-w-xl mx-auto">Hello! I'm Devid, a developer passionate about solving problems and building solutions in Python, Node.js, and beyond...</p>
     </section>
 
-    <section id="projects" class="section">
-        <h2 data-key="projects">Projects</h2>
-        <div class="project" data-key="project-1">
-            <h3><a href="https://github.com/dddevid/Roblox-Freezing-Fix" target="_blank">Roblox-Freezing-Fix</a></h3>
-            <p>Fix freezing issues in Roblox.</p>
-        </div>
-        <div class="project" data-key="project-2">
-            <h3><a href="https://github.com/dddevid/F-iOS" target="_blank">F-iOS</a></h3>
-            <p>F-Droid like library for Altstore/Scarlett.</p>
-        </div>
-        <div class="project" data-key="project-3">
-            <h3><a href="https://github.com/dddevid/OnlineMusicPlayer" target="_blank">OnlineMusicPlayer</a></h3>
-            <p>A web-based music player to play music online.</p>
+    <section id="projects" class="py-10 text-center">
+        <h2 class="text-3xl font-semibold mb-4">Projects</h2>
+        <div class="flex flex-wrap justify-center space-x-5 space-y-5">
+            <div class="bg-white rounded-lg shadow-lg p-5 w-80 hover:shadow-xl transition duration-300">
+                <h3 class="font-bold text-xl"><a href="https://github.com/dddevid/Roblox-Freezing-Fix" target="_blank" class="text-blue-600 hover:underline">Roblox-Freezing-Fix</a></h3>
+                <p>Fix freezing issues in Roblox.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-5 w-80 hover:shadow-xl transition duration-300">
+                <h3 class="font-bold text-xl"><a href="https://github.com/dddevid/F-iOS" target="_blank" class="text-blue-600 hover:underline">F-iOS</a></h3>
+                <p>F-Droid like library for Altstore/Scarlett.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-5 w-80 hover:shadow-xl transition duration-300">
+                <h3 class="font-bold text-xl"><a href="https://github.com/dddevid/OnlineMusicPlayer" target="_blank" class="text-blue-600 hover:underline">OnlineMusicPlayer</a></h3>
+                <p>A web-based music player to play music online.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-5 w-80 hover:shadow-xl transition duration-300">
+                <h3 class="font-bold text-xl"><a href="https://github.com/dddevid/YTDLPY" target="_blank" class="text-blue-600 hover:underline">YTDLPY</a></h3>
+                <p>A Python wrapper for youtube-dl, making it easier to download videos.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-5 w-80 hover:shadow-xl transition duration-300">
+                <h3 class="font-bold text-xl"><a href="https://github.com/dddevid/FreeProxylist" target="_blank" class="text-blue-600 hover:underline">FreeProxylist</a></h3>
+                <p>A collection of free proxy servers.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-5 w-80 hover:shadow-xl transition duration-300">
+                <h3 class="font-bold text-xl"><a href="https://github.com/dddevid/FCleaner" target="_blank" class="text-blue-600 hover:underline">FCleaner</a></h3>
+                <p>A tool for cleaning and optimizing files on your system.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-5 w-80 hover:shadow-xl transition duration-300">
+                <h3 class="font-bold text-xl"><a href="https://github.com/dddevid/SD-Copier" target="_blank" class="text-blue-600 hover:underline">SD-Copier</a></h3>
+                <p>A utility for copying files to SD cards efficiently.</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-5 w-80 hover:shadow-xl transition duration-300">
+                <h3 class="font-bold text-xl"><a href="https://github.com/dddevid/yolov5-fix" target="_blank" class="text-blue-600 hover:underline">yolov5-fix</a></h3>
+                <p>A fix for common issues in YOLOv5 implementations.</p>
+            </div>
         </div>
     </section>
 
-    <section id="skills" class="section">
-        <h2 data-key="skills">Skills</h2>
-        <ul>
+    <section id="skills" class="py-10 text-center">
+        <h2 class="text-3xl font-semibold mb-4">Skills</h2>
+        <ul class="list-disc list-inside">
             <li>Python (Flask, PyQt5)</li>
             <li>JavaScript (Node.js, React)</li>
         </ul>
     </section>
 
-    <section id="contact" class="section">
-        <h2 data-key="contact">Contact</h2>
-        <p>Email: devidrru@gmail.com</p>
+    <section id="contact" class="py-10 text-center">
+        <h2 class="text-3xl font-semibold mb-4">Contact</h2>
+        <p>Email: <a href="mailto:devidrru@gmail.com" class="text-blue-600 hover:underline">devidrru@gmail.com</a></p>
     </section>
 
-    <footer>
+    <footer class="bg-gray-800 text-white text-center p-5">
         <p>&copy; 2024 Devid's Portfolio</p>
     </footer>
 
-    <script src="main.js"></script>
 </body>
 </html>
