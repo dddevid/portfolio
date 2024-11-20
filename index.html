@@ -13,10 +13,11 @@
         .card {
             background-color: #1a1a1a;
             color: #ffffff;
-            transition: box-shadow 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s;
         }
         .card:hover {
-            box-shadow: 0 0 11px rgba(33,33,33,.2);
+            transform: scale(1.05); /* Ingrossa la card al passaggio del mouse */
+            box-shadow: 0 0 15px rgba(33,33,33,.4); /* Aggiunge un'ombra più grande */
         }
         .card-content {
             height: 100%;
@@ -128,6 +129,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Added Minecraft-Server-Info project -->
                 <div class="column is-one-third">
                     <div class="card">
                         <div class="card-content">
@@ -150,6 +152,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Funzione per equalizzare l'altezza delle carte
             const equalizeCardHeights = () => {
                 const cards = document.querySelectorAll('.card-content');
                 let maxHeight = 0;
@@ -162,6 +165,7 @@
                 });
             };
 
+            // Esegui la funzione al caricamento e al ridimensionamento della finestra
             equalizeCardHeights();
             window.addEventListener('resize', equalizeCardHeights);
         });
