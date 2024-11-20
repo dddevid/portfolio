@@ -128,7 +128,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Added Minecraft-Server-Info project -->
                 <div class="column is-one-third">
                     <div class="card">
                         <div class="card-content">
@@ -151,7 +150,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Funzione per equalizzare l'altezza delle carte
             const equalizeCardHeights = () => {
                 const cards = document.querySelectorAll('.card-content');
                 let maxHeight = 0;
@@ -164,7 +162,6 @@
                 });
             };
 
-            // Esegui la funzione al caricamento e al ridimensionamento della finestra
             equalizeCardHeights();
             window.addEventListener('resize', equalizeCardHeights);
         });
