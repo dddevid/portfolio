@@ -14,10 +14,12 @@
             background-color: #1a1a1a;
             color: #ffffff;
             transition: transform 0.3s ease, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
         }
         .card:hover {
-            transform: scale(1.05); /* Ingrossa la card al passaggio del mouse */
-            box-shadow: 0 0 15px rgba(33,33,33,.4); /* Aggiunge un'ombra più grande */
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(33,33,33,.4);
         }
         .card-content {
             height: 100%;
@@ -35,6 +37,36 @@
             background-color: #1a1a1a;
             color: #ffffff;
         }
+
+        .language-buttons {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .language-buttons.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .language-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #3273dc;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .language-buttons button:hover {
+            background-color: #4a89dc;
+        }
+
     </style>
 </head>
 <body>
@@ -132,12 +164,17 @@
                 </div>
                 <!-- Added AI Web Scraper with Ollama project -->
                 <div class="column is-one-third">
-                    <div class="card">
+                    <div class="card" id="ai-web-scraper-card">
                         <div class="card-content">
                             <p class="title is-4">
-                                <a href="javascript:void(0)" onclick="chooseLanguage()" class="project-link">AI Web Scraper with Ollama</a>
+                                <a href="javascript:void(0)" onclick="showLanguageButtons(this)" class="project-link">AI Web Scraper with Ollama</a>
                             </p>
                             <p class="subtitle is-6">A scraper for websites that uses the Ollama's Llama3 AI model to analyze content.</p>
+                            <!-- Hidden language selection buttons -->
+                            <div class="language-buttons" id="language-buttons">
+                                <button onclick="redirectToLanguage('english')">English</button>
+                                <button onclick="redirectToLanguage('italian')">Italian</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -152,27 +189,21 @@
     </footer>
 
     <script>
-        function chooseLanguage() {
-            const languageDropdown = `
-                <select id="languageSelector" onchange="redirectToLanguage()">
-                    <option value="">Select Language</option>
-                    <option value="english">English</option>
-                    <option value="italian">Italian</option>
-                </select>
-            `;
-            const languageChoice = document.createElement('div');
-            languageChoice.innerHTML = languageDropdown;
-            document.body.appendChild(languageChoice);
+        function showLanguageButtons(element) {
+            const cardContent = element.closest('.card-content');
+            const languageButtons = cardContent.querySelector('.language-buttons');
+            
+            // Fade out the project link and description, and fade in the language buttons
+            cardContent.querySelector('.title').style.display = 'none';
+            cardContent.querySelector('.subtitle').style.display = 'none';
+            languageButtons.classList.add('show');
         }
 
-        function redirectToLanguage() {
-            const selectedLanguage = document.getElementById('languageSelector').value;
-            if (selectedLanguage === 'english') {
+        function redirectToLanguage(language) {
+            if (language === 'english') {
                 window.location.href = "https://github.com/dddevid/AI-Web-Scraper-Ollama";
-            } else if (selectedLanguage === 'italian') {
+            } else if (language === 'italian') {
                 window.location.href = "https://github.com/dddevid/AI-Web-Scraper-Ollama/tree/Italian";
-            } else {
-                alert("Please select a language.");
             }
         }
 
