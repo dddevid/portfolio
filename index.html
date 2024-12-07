@@ -129,14 +129,14 @@
                         </div>
                     </div>
                 </div>
-                <!-- Added Minecraft-Server-Info project -->
+                <!-- Added AI Web Scraper with Ollama project -->
                 <div class="column is-one-third">
                     <div class="card">
                         <div class="card-content">
                             <p class="title is-4">
-                                <a href="https://github.com/dddevid/Minecraft-Server-Info" target="_blank" class="project-link">Minecraft-Server-Info</a>
+                                <a href="javascript:void(0)" onclick="chooseLanguage()" class="project-link">AI Web Scraper with Ollama</a>
                             </p>
-                            <p class="subtitle is-6">A web app to display information about a Minecraft server using GitHub Pages.</p>
+                            <p class="subtitle is-6">A scraper for websites that uses the Ollama's Llama3 AI model to analyze content.</p>
                         </div>
                     </div>
                 </div>
@@ -151,6 +151,17 @@
     </footer>
 
     <script>
+        function chooseLanguage() {
+            const language = prompt("Which language would you like to use?\nType 'English' or 'Italian'.");
+            if (language === "English") {
+                window.location.href = "https://github.com/dddevid/AI-Web-Scraper-Ollama";
+            } else if (language === "Italian") {
+                window.location.href = "https://github.com/dddevid/AI-Web-Scraper-Ollama/tree/Italian";
+            } else {
+                alert("Invalid choice. Please type either 'English' or 'Italian'.");
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             // Funzione per equalizzare l'altezza delle carte
             const equalizeCardHeights = () => {
