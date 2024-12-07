@@ -8,7 +8,7 @@
     <style>
         body {
             background-color: #0a0a0a;
-            color: #ffffff;
+            color: #1a1a1a;
         }
         .card {
             background-color: #1a1a1a;
@@ -103,16 +103,6 @@
                     <div class="card">
                         <div class="card-content">
                             <p class="title is-4">
-                                <a href="https://github.com/dddevid/FCleaner" target="_blank" class="project-link">FCleaner</a>
-                            </p>
-                            <p class="subtitle is-6">A tool for cleaning and optimizing files on your system.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-one-third">
-                    <div class="card">
-                        <div class="card-content">
-                            <p class="title is-4">
                                 <a href="https://github.com/dddevid/SD-Copier" target="_blank" class="project-link">SD-Copier</a>
                             </p>
                             <p class="subtitle is-6">A utility for copying files to SD cards efficiently.</p>
@@ -126,6 +116,17 @@
                                 <a href="https://github.com/dddevid/yolov5-fix" target="_blank" class="project-link">yolov5-fix</a>
                             </p>
                             <p class="subtitle is-6">A fix for common issues in YOLOv5 implementations.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Added Minecraft-Server-Info project instead of FCleaner -->
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-content">
+                            <p class="title is-4">
+                                <a href="https://github.com/dddevid/Minecraft-Server-Info" target="_blank" class="project-link">Minecraft-Server-Info</a>
+                            </p>
+                            <p class="subtitle is-6">A web app to display information about a Minecraft server using GitHub Pages.</p>
                         </div>
                     </div>
                 </div>
@@ -152,13 +153,26 @@
 
     <script>
         function chooseLanguage() {
-            const language = prompt("Which language would you like to use?\nType 'English' or 'Italian'.");
-            if (language === "English") {
+            const languageDropdown = `
+                <select id="languageSelector" onchange="redirectToLanguage()">
+                    <option value="">Select Language</option>
+                    <option value="english">English</option>
+                    <option value="italian">Italian</option>
+                </select>
+            `;
+            const languageChoice = document.createElement('div');
+            languageChoice.innerHTML = languageDropdown;
+            document.body.appendChild(languageChoice);
+        }
+
+        function redirectToLanguage() {
+            const selectedLanguage = document.getElementById('languageSelector').value;
+            if (selectedLanguage === 'english') {
                 window.location.href = "https://github.com/dddevid/AI-Web-Scraper-Ollama";
-            } else if (language === "Italian") {
+            } else if (selectedLanguage === 'italian') {
                 window.location.href = "https://github.com/dddevid/AI-Web-Scraper-Ollama/tree/Italian";
             } else {
-                alert("Invalid choice. Please type either 'English' or 'Italian'.");
+                alert("Please select a language.");
             }
         }
 
