@@ -152,16 +152,18 @@
     </div>
 </section>
 
-    <script>
-        // Toggle Theme
-        function toggleTheme() {
-            const html = document.documentElement;
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', newTheme);
-        }
+<script>
+    // Toggle Theme
+    function toggleTheme() {
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', newTheme);
+    }
 
-        // Animazioni
+    // Animazioni iniziali
+    document.addEventListener('DOMContentLoaded', () => {
+        // Animazione titolo principale
         anime({
             targets: '#mainTitle',
             opacity: [0, 1],
@@ -170,35 +172,32 @@
             easing: 'easeOutExpo'
         });
 
-        // Animazione card progetti
-        anime({
-            targets: '.project-card',
-            opacity: [0, 1],
-            translateY: [50, 0],
-            delay: anime.stagger(100),
-            duration: 1000,
-            easing: 'easeOutExpo',
-            scrollTrigger: {
-                trigger: '.project-card',
-                start: 'top bottom-=200'
-            }
-        });
+        // Animazione card progetti con Intersection Observer
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => card.style.opacity = 0);
 
-        // Scroll Reveal
-        window.addEventListener('scroll', () => {
-            anime({
-                targets: '.project-card',
-                opacity: [0, 1],
-                translateY: [50, 0],
-                delay: anime.stagger(100),
-                duration: 1000,
-                easing: 'easeOutExpo',
-                scrollTrigger: {
-                    trigger: '.project-card',
-                    start: 'top bottom-=200'
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    anime({
+                        targets: entry.target,
+                        opacity: [0, 1],
+                        translateY: [50, 0],
+                        duration: 800,
+                        easing: 'easeOutExpo'
+                    });
+                    observer.unobserve(entry.target);
                 }
             });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
         });
-    </script>
+
+        projectCards.forEach(card => observer.observe(card));
+    });
+
+    // Rimuovi l'event listener dello scroll originale
+</script>
 </body>
 </html>
