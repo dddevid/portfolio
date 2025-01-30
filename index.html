@@ -1,48 +1,29 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devid's Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/daisyui@3.0.0"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <style>
-        body {
-            transition: background 0.5s, color 0.5s;
-        }
-        .neon-text {
-            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
-        }
-    </style>
+    <title>My Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body data-theme="dark" class="min-h-screen flex flex-col items-center justify-center p-5">
-    <button onclick="toggleTheme()" class="btn btn-primary mb-5">Toggle Theme</button>
-    <h1 class="text-4xl font-bold neon-text">Devid's Portfolio</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
-        <script>
-            const projects = [
-                { name: "Roblox Freezing Fix", url: "https://github.com/dddevid/Roblox-Freezing-Fix" },
-                { name: "Minecraft Server Info", url: "https://github.com/dddevid/Minecraft-Server-Info" },
-                { name: "OnlineMusicPlayer", url: "https://github.com/dddevid/OnlineMusicPlayer" },
-                { name: "TiktokCoinConverter", url: "https://github.com/dddevid/tiktokcoinconverter" },
-                { name: "PassChecker", url: "https://github.com/dddevid/PassChecker" },
-                { name: "DevSpeedTest", url: "https://github.com/dddevid/DevSpeedTest" },
-                { name: "YTDLPY", url: "https://github.com/dddevid/YTDLPY" }
-            ];
+<body>
+    <header class="bg-gray-800 text-white p-4 flex justify-between items-center">
+        <h1 class="text-xl">My Portfolio</h1>
+        <button id="theme-toggle" class="btn btn-primary">Toggle Dark/Light Mode</button>
+    </header>
 
-            document.write(projects.map(p => `
-                <a href="${p.url}" class="card bg-base-200 p-5 shadow-xl transition transform hover:scale-105">
-                    <h2 class="text-xl font-semibold">${p.name}</h2>
-                </a>`).join(''));
-        </script>
-    </div>
-    
-    <script>
-        function toggleTheme() {
-            document.body.dataset.theme = document.body.dataset.theme === "dark" ? "light" : "dark";
-        }
-        anime({ targets: 'h1', opacity: [0, 1], translateY: [-20, 0], duration: 1000, easing: 'easeOutExpo' });
-    </script>
+    <main class="p-4">
+        <section id="projects" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Project Cards will be inserted here via JavaScript -->
+        </section>
+    </main>
+
+    <footer class="text-center p-4">
+        <p>&copy; 2025 My Portfolio</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
