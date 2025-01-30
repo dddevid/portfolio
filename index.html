@@ -1,230 +1,209 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ddevid's Portfolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <style>
-        body {
-            background-color: #0a0a0a;
-            color: #ffffff;
-        }
-        .card {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            transition: transform 0.3s ease, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(33,33,33,.4);
-        }
-        .card-content {
-            height: 100%;
-        }
-        .title, .subtitle {
-            color: #ffffff;
-        }
-        .project-link {
-            color: #3273dc;
-        }
-        .project-link:hover {
-            color: #4a89dc;
-        }
-        .footer {
-            background-color: #1a1a1a;
-            color: #ffffff;
-        }
+import React, { useState, useEffect } from 'react';
+import anime from 'animejs';
+import { Github, Moon, Sun, ExternalLink, Menu, X } from 'lucide-react';
 
-        .language-buttons {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+const projects = [
+  {
+    title: "Roblox Freezing Fix",
+    description: "Utility per risolvere i problemi di freeze su Roblox",
+    tech: ["Python", "System Utilities"],
+    github: "https://github.com/dddevid/Roblox-Freezing-Fix"
+  },
+  {
+    title: "Minecraft Server Info",
+    description: "Tool per ottenere informazioni sui server Minecraft",
+    tech: ["Python", "Networking"],
+    github: "https://github.com/dddevid/Minecraft-Server-Info"
+  },
+  {
+    title: "OnlineMusicPlayer",
+    description: "Player musicale online con interfaccia moderna",
+    tech: ["Web Audio API", "JavaScript"],
+    github: "https://github.com/dddevid/OnlineMusicPlayer"
+  },
+  {
+    title: "TiktokCoinConverter",
+    description: "Convertitore di valuta per TikTok Coins",
+    tech: ["JavaScript", "Currency API"],
+    github: "https://github.com/dddevid/tiktokcoinconverter"
+  },
+  {
+    title: "PassChecker",
+    description: "Strumento per verificare la sicurezza delle password",
+    tech: ["Python", "Security"],
+    github: "https://github.com/dddevid/PassChecker"
+  },
+  {
+    title: "DevSpeedTest",
+    description: "Tester di velocità internet personalizzato",
+    tech: ["Python", "Networking"],
+    github: "https://github.com/dddevid/DevSpeedTest"
+  },
+  {
+    title: "YTDLPY",
+    description: "Download manager per contenuti YouTube",
+    tech: ["Python", "YouTube API"],
+    github: "https://github.com/dddevid/YTDLPY"
+  }
+];
 
-        .language-buttons.show {
-            display: block;
-            opacity: 1;
-        }
+const Portfolio = () => {
+  const [darkMode, setDarkMode] = useState(true);
+  const [animationPlayed, setAnimationPlayed] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-        .language-buttons button {
-            margin: 0 10px;
-            padding: 10px 20px;
-            background-color: #3273dc;
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-        .language-buttons button:hover {
-            background-color: #4a89dc;
-        }
+  useEffect(() => {
+    if (!animationPlayed) {
+      anime({
+        targets: '.project-card',
+        translateY: [50, 0],
+        opacity: [0, 1],
+        delay: anime.stagger(100),
+        easing: 'easeOutExpo',
+        duration: 800
+      });
+      setAnimationPlayed(true);
+    }
+  }, [animationPlayed]);
 
-    </style>
-</head>
-<body>
-    <nav class="navbar is-black" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="#">
-                <h1 class="title is-4">ddevid's Portfolio</h1>
-            </a>
-        </div>
-    </nav>
+  useEffect(() => {
+    const root = document.documentElement;
+    if (darkMode) {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [darkMode]);
 
-    <section class="section">
-        <div class="container">
-            <div class="columns is-multiline">
-                <div class="column is-one-third">
-                    <div class="card">
-                        <div class="card-content">
-                            <p class="title is-4">
-                                <a href="https://github.com/dddevid/Roblox-Freezing-Fix" target="_blank" class="project-link">Roblox-Freezing-Fix</a>
-                            </p>
-                            <p class="subtitle is-6">Fix freezing issues in Roblox.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-one-third">
-                    <div class="card">
-                        <div class="card-content">
-                            <p class="title is-4">
-                                <a href="https://github.com/dddevid/F-iOS" target="_blank" class="project-link">F-iOS</a>
-                            </p>
-                            <p class="subtitle is-6">F-Droid like library for Altstore/Scarlett.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-one-third">
-                    <div class="card">
-                        <div class="card-content">
-                            <p class="title is-4">
-                                <a href="https://github.com/dddevid/OnlineMusicPlayer" target="_blank" class="project-link">OnlineMusicPlayer</a>
-                            </p>
-                            <p class="subtitle is-6">A web-based music player to play music online.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-one-third">
-                    <div class="card">
-                        <div class="card-content">
-                            <p class="title is-4">
-                                <a href="https://github.com/dddevid/YTDLPY" target="_blank" class="project-link">YTDLPY</a>
-                            </p>
-                            <p class="subtitle is-6">A Python wrapper for youtube-dl, making it easier to download videos.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-one-third">
-                    <div class="card">
-                        <div class="card-content">
-                            <p class="title is-4">
-                                <a href="https://github.com/dddevid/FreeProxylist" target="_blank" class="project-link">FreeProxylist</a>
-                            </p>
-                            <p class="subtitle is-6">A collection of free proxy servers.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-one-third">
-                    <div class="card">
-                        <div class="card-content">
-                            <p class="title is-4">
-                                <a href="https://github.com/dddevid/SD-Copier" target="_blank" class="project-link">SD-Copier</a>
-                            </p>
-                            <p class="subtitle is-6">A utility for copying files to SD cards efficiently.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-one-third">
-                    <div class="card">
-                        <div class="card-content">
-                            <p class="title is-4">
-                                <a href="https://github.com/dddevid/yolov5-fix" target="_blank" class="project-link">yolov5-fix</a>
-                            </p>
-                            <p class="subtitle is-6">A fix for common issues in YOLOv5 implementations.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Added Minecraft-Server-Info project instead of FCleaner -->
-                <div class="column is-one-third">
-                    <div class="card">
-                        <div class="card-content">
-                            <p class="title is-4">
-                                <a href="https://github.com/dddevid/Minecraft-Server-Info" target="_blank" class="project-link">Minecraft-Server-Info</a>
-                            </p>
-                            <p class="subtitle is-6">A web app to display information about a Minecraft server using GitHub Pages.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Added AI Web Scraper with Ollama project -->
-                <div class="column is-one-third">
-                    <div class="card" id="ai-web-scraper-card">
-                        <div class="card-content">
-                            <p class="title is-4">
-                                <a href="javascript:void(0)" onclick="showLanguageButtons(this)" class="project-link">AI Web Scraper with Ollama</a>
-                            </p>
-                            <p class="subtitle is-6">A scraper for websites that uses the Ollama's Llama3 AI model to analyze content.</p>
-                            <!-- Hidden language selection buttons -->
-                            <div class="language-buttons" id="language-buttons">
-                                <button onclick="redirectToLanguage('english')">English</button>
-                                <button onclick="redirectToLanguage('italian')">Italian</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  const toggleTheme = () => {
+    setDarkMode(!darkMode);
+    anime({
+      targets: '.theme-switch',
+      rotate: '360deg',
+      duration: 1000,
+      easing: 'easeInOutQuad'
+    });
+  };
+
+  return (
+    <div className={`min-h-screen ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'} transition-colors duration-300`}>
+      {/* Navbar */}
+      <nav className="fixed w-full backdrop-blur-md bg-opacity-70 dark:bg-opacity-70 z-50 
+                     bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+        <div className="container mx-auto px-4 sm:px-6 py-4">
+          <div className="flex justify-between items-center">
+            <h1 className={`text-xl sm:text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'} 
+                           hover:text-purple-500 transition-colors duration-300`}>
+              dddevid
+            </h1>
+            <div className="flex items-center gap-4">
+              <button
+                onClick={toggleTheme}
+                className="theme-switch p-2 rounded-lg bg-gray-200 dark:bg-gray-700 
+                         hover:bg-purple-200 dark:hover:bg-purple-700 transition-all duration-300"
+              >
+                {darkMode ? <Sun className="w-5 h-5 text-yellow-300" /> : <Moon className="w-5 h-5 text-gray-600" />}
+              </button>
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="md:hidden p-2 rounded-lg bg-gray-200 dark:bg-gray-700 
+                         hover:bg-purple-200 dark:hover:bg-purple-700 transition-all duration-300"
+              >
+                {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
             </div>
+          </div>
         </div>
-    </section>
+      </nav>
 
-    <footer class="footer">
-        <div class="content has-text-centered">
-            <p>&copy; 2024 ddevid's Portfolio. All rights reserved.</p>
+      {/* Mobile Menu */}
+      {isMenuOpen && isMobile && (
+        <div className="fixed inset-0 z-40 pt-20 bg-white dark:bg-gray-900 bg-opacity-95 dark:bg-opacity-95">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col space-y-4">
+              {/* Add mobile menu items here if needed */}
+            </div>
+          </div>
         </div>
-    </footer>
+      )}
 
-    <script>
-        function showLanguageButtons(element) {
-            const cardContent = element.closest('.card-content');
-            const languageButtons = cardContent.querySelector('.language-buttons');
-            
-            // Fade out the project link and description, and fade in the language buttons
-            cardContent.querySelector('.title').style.display = 'none';
-            cardContent.querySelector('.subtitle').style.display = 'none';
-            languageButtons.classList.add('show');
-        }
+      {/* Main Content */}
+      <main className="container mx-auto px-4 sm:px-6 pt-24 pb-12">
+        <section className="text-center mb-12 sm:mb-16">
+          <h2 className={`text-4xl sm:text-5xl font-bold mb-4 sm:mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}
+                         animate-text-shadow transition-colors duration-300`}>
+            I Miei Progetti
+          </h2>
+          <p className={`text-lg sm:text-xl ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+            Una collezione dei miei progetti di sviluppo software
+          </p>
+        </section>
 
-        function redirectToLanguage(language) {
-            if (language === 'english') {
-                window.location.href = "https://github.com/dddevid/AI-Web-Scraper-Ollama";
-            } else if (language === 'italian') {
-                window.location.href = "https://github.com/dddevid/AI-Web-Scraper-Ollama/tree/Italian";
-            }
-        }
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              className={`project-card rounded-xl p-4 sm:p-6 ${
+                darkMode 
+                  ? 'bg-gray-800 hover:bg-gray-700 text-white' 
+                  : 'bg-white hover:bg-gray-50 text-gray-900'
+              } 
+              shadow-lg hover:shadow-xl transition-all duration-300
+              border border-transparent hover:border-purple-500
+              hover:shadow-purple-500/20`}
+            >
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 hover:text-purple-500 transition-colors">
+                {project.title}
+              </h3>
+              <p className={`mb-3 sm:mb-4 text-sm sm:text-base ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
+                {project.tech.map((tech, techIndex) => (
+                  <span
+                    key={techIndex}
+                    className="px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full bg-purple-500 text-white
+                             hover:bg-purple-600 transition-colors duration-300"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-purple-500 hover:text-purple-600 
+                         transition-colors duration-300 text-sm sm:text-base"
+              >
+                <Github className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span>Vedi su GitHub</span>
+                <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </main>
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // Funzione per equalizzare l'altezza delle carte
-            const equalizeCardHeights = () => {
-                const cards = document.querySelectorAll('.card-content');
-                let maxHeight = 0;
-                cards.forEach(card => {
-                    card.style.height = 'auto';
-                    maxHeight = Math.max(maxHeight, card.offsetHeight);
-                });
-                cards.forEach(card => {
-                    card.style.height = `${maxHeight}px`;
-                });
-            };
+      {/* Footer */}
+      <footer className={`py-4 sm:py-6 ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-900'}`}>
+        <div className="container mx-auto px-4 sm:px-6 text-center text-sm sm:text-base">
+          <p>© 2025 dddevid. Tutti i diritti riservati.</p>
+        </div>
+      </footer>
+    </div>
+  );
+};
 
-            // Esegui la funzione al caricamento e al ridimensionamento della finestra
-            equalizeCardHeights();
-            window.addEventListener('resize', equalizeCardHeights);
-        });
-    </script>
-</body>
-</html>
+export default Portfolio;
