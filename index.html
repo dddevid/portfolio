@@ -1,29 +1,204 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>David's Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <style>
+        .neon-text {
+            text-shadow: 0 0 10px #4f46e5,
+                         0 0 20px #4f46e5,
+                         0 0 30px #4f46e5;
+            animation: neonPulse 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonPulse {
+            from {
+                text-shadow: 0 0 5px #4f46e5,
+                            0 0 10px #4f46e5;
+            }
+            to {
+                text-shadow: 0 0 15px #4f46e5,
+                            0 0 25px #4f46e5,
+                            0 0 35px #4f46e5;
+            }
+        }
+
+        .project-card {
+            transition: transform 0.3s;
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, #1a1a1a, #2d2d2d) padding-box,
+                        linear-gradient(45deg, #4f46e5, #ec4899) border-box;
+        }
+
+        .dark .project-card {
+            background: linear-gradient(45deg, #0f172a, #1e293b) padding-box,
+                        linear-gradient(45deg, #4f46e5, #ec4899) border-box;
+        }
+    </style>
 </head>
-<body>
-    <header class="bg-gray-800 text-white p-4 flex justify-between items-center">
-        <h1 class="text-xl">My Portfolio</h1>
-        <button id="theme-toggle" class="btn btn-primary">Toggle Dark/Light Mode</button>
-    </header>
+<body class="min-h-screen bg-base-100">
+    <!-- Theme Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <button onclick="toggleTheme()" class="btn btn-circle btn-primary">
+            🌓
+        </button>
+    </div>
 
-    <main class="p-4">
-        <section id="projects" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <!-- Project Cards will be inserted here via JavaScript -->
-        </section>
-    </main>
+    <!-- Hero Section -->
+    <section class="hero min-h-screen bg-gradient-to-br from-base-100 via-base-200 to-base-300">
+        <div class="hero-content text-center">
+            <div class="max-w-2xl">
+                <h1 class="text-6xl font-bold neon-text text-primary mb-6" id="mainTitle">
+                    David's Dev Portfolio
+                </h1>
+                <p class="text-xl mb-8">Appassionato sviluppatore di soluzioni creative</p>
+            </div>
+        </div>
+    </section>
 
-    <footer class="text-center p-4">
-        <p>&copy; 2025 My Portfolio</p>
-    </footer>
+<!-- Projects Section -->
+<section class="container mx-auto px-4 py-16">
+    <h2 class="text-4xl font-bold text-center mb-12 neon-text">Progetti</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Roblox Freezing Fix -->
+        <div class="project-card rounded-xl p-6 shadow-xl">
+            <h3 class="text-2xl font-bold mb-4">Roblox Freezing Fix</h3>
+            <p class="mb-4">Soluzione per risolvere il freezing in Roblox</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="badge badge-primary">Python</span>
+                <span class="badge badge-secondary">Ottimizzazione</span>
+                <span class="badge badge-accent">Windows</span>
+            </div>
+            <a href="https://github.com/dddevid/Roblox-Freezing-Fix" target="_blank" class="btn btn-primary btn-sm">GitHub</a>
+        </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="script.js"></script>
+        <!-- Minecraft Server Info -->
+        <div class="project-card rounded-xl p-6 shadow-xl">
+            <h3 class="text-2xl font-bold mb-4">Minecraft Server Info</h3>
+            <p class="mb-4">Strumento per ottenere informazioni sui server Minecraft</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="badge badge-primary">Python</span>
+                <span class="badge badge-secondary">Minecraft API</span>
+                <span class="badge badge-accent">CLI</span>
+            </div>
+            <a href="https://github.com/dddevid/Minecraft-Server-Info" target="_blank" class="btn btn-primary btn-sm">GitHub</a>
+        </div>
+
+        <!-- OnlineMusicPlayer -->
+        <div class="project-card rounded-xl p-6 shadow-xl">
+            <h3 class="text-2xl font-bold mb-4">OnlineMusicPlayer</h3>
+            <p class="mb-4">Lettore musicale web con funzionalità streaming</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="badge badge-primary">JavaScript</span>
+                <span class="badge badge-secondary">Web API</span>
+                <span class="badge badge-accent">UI/UX</span>
+            </div>
+            <a href="https://github.com/dddevid/OnlineMusicPlayer" target="_blank" class="btn btn-primary btn-sm">GitHub</a>
+        </div>
+
+        <!-- TiktokCoinConverter -->
+        <div class="project-card rounded-xl p-6 shadow-xl">
+            <h3 class="text-2xl font-bold mb-4">TikTok Coin Converter</h3>
+            <p class="mb-4">Convertitore valute per TikTok LIVE</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="badge badge-primary">Python</span>
+                <span class="badge badge-secondary">Web Scraping</span>
+                <span class="badge badge-accent">Utility</span>
+            </div>
+            <a href="https://github.com/dddevid/tiktokcoinconverter" target="_blank" class="btn btn-primary btn-sm">GitHub</a>
+        </div>
+
+        <!-- PassChecker -->
+        <div class="project-card rounded-xl p-6 shadow-xl">
+            <h3 class="text-2xl font-bold mb-4">PassChecker</h3>
+            <p class="mb-4">Strumento per la verifica della sicurezza password</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="badge badge-primary">Python</span>
+                <span class="badge badge-secondary">Sicurezza</span>
+                <span class="badge badge-accent">Hashing</span>
+            </div>
+            <a href="https://github.com/dddevid/PassChecker" target="_blank" class="btn btn-primary btn-sm">GitHub</a>
+        </div>
+
+        <!-- DevSpeedTest -->
+        <div class="project-card rounded-xl p-6 shadow-xl">
+            <h3 class="text-2xl font-bold mb-4">DevSpeedTest</h3>
+            <p class="mb-4">Test prestazioni per sviluppatori</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="badge badge-primary">Python</span>
+                <span class="badge badge-secondary">Benchmark</span>
+                <span class="badge badge-accent">Ottimizzazione</span>
+            </div>
+            <a href="https://github.com/dddevid/DevSpeedTest" target="_blank" class="btn btn-primary btn-sm">GitHub</a>
+        </div>
+
+        <!-- YTDLPY -->
+        <div class="project-card rounded-xl p-6 shadow-xl">
+            <h3 class="text-2xl font-bold mb-4">YTDLPY</h3>
+            <p class="mb-4">Wrapper Python per youtube-dl con interfaccia semplice</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="badge badge-primary">Python</span>
+                <span class="badge badge-secondary">YouTube API</span>
+                <span class="badge badge-accent">CLI</span>
+            </div>
+            <a href="https://github.com/dddevid/YTDLPY" target="_blank" class="btn btn-primary btn-sm">GitHub</a>
+        </div>
+
+    </div>
+</section>
+
+    <script>
+        // Toggle Theme
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+        }
+
+        // Animazioni
+        anime({
+            targets: '#mainTitle',
+            opacity: [0, 1],
+            translateY: [-50, 0],
+            duration: 2000,
+            easing: 'easeOutExpo'
+        });
+
+        // Animazione card progetti
+        anime({
+            targets: '.project-card',
+            opacity: [0, 1],
+            translateY: [50, 0],
+            delay: anime.stagger(100),
+            duration: 1000,
+            easing: 'easeOutExpo',
+            scrollTrigger: {
+                trigger: '.project-card',
+                start: 'top bottom-=200'
+            }
+        });
+
+        // Scroll Reveal
+        window.addEventListener('scroll', () => {
+            anime({
+                targets: '.project-card',
+                opacity: [0, 1],
+                translateY: [50, 0],
+                delay: anime.stagger(100),
+                duration: 1000,
+                easing: 'easeOutExpo',
+                scrollTrigger: {
+                    trigger: '.project-card',
+                    start: 'top bottom-=200'
+                }
+            });
+        });
+    </script>
 </body>
 </html>
