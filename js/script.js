@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinksContainer = document.querySelector('.nav-links');
     const flutterIcon = document.getElementById('flutter-icon');
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
     
     // Function to update Flutter icon based on theme
     function updateFlutterIcon() {
@@ -40,6 +41,24 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize Flutter icon based on current theme
     updateFlutterIcon();
+    
+    // Prevent Flutter icon from being copied or dragged
+    if (flutterIcon) {
+        flutterIcon.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        flutterIcon.addEventListener('copy', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        flutterIcon.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+    }
     
     // Language Switcher
     langButtons.forEach(button => {
@@ -139,6 +158,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
+        
+        // Show/hide scroll to top button
+        if (scrollPosition > 300) {
+            scrollToTopBtn.classList.add('active');
+        } else {
+            scrollToTopBtn.classList.remove('active');
+        }
+    });
+    
+    // Scroll to top functionality
+    scrollToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
     
     // Email Template Functionality
@@ -202,48 +236,8 @@ ${name}`;
             // Open email client
             window.location.href = mailtoLink;
             
-            // Reset form after sending
+            // Reset form
             contactForm.reset();
-            
-            // Show success message
-            const successMessage = document.createElement('div');
-            successMessage.className = 'form-success';
-            successMessage.textContent = 'Email client opened with your message!';
-            contactForm.appendChild(successMessage);
-            
-            // Remove success message after 5 seconds
-            setTimeout(() => {
-                successMessage.remove();
-            }, 5000);
         });
     }
-    
-    // Animation on scroll
-    const animateElements = document.querySelectorAll('.animate-on-scroll');
-    
-    function checkIfInView() {
-        const windowHeight = window.innerHeight;
-        const windowTopPosition = window.scrollY;
-        const windowBottomPosition = windowTopPosition + windowHeight;
-        
-        animateElements.forEach(element => {
-            const elementHeight = element.offsetHeight;
-            const elementTopPosition = element.offsetTop;
-            const elementBottomPosition = elementTopPosition + elementHeight;
-            
-            // Check if element is in view
-            if (
-                (elementBottomPosition >= windowTopPosition) &&
-                (elementTopPosition <= windowBottomPosition)
-            ) {
-                element.classList.add('animated');
-            }
-        });
-    }
-    
-    // Check elements on load
-    checkIfInView();
-    
-    // Check elements on scroll
-    window.addEventListener('scroll', checkIfInView);
 });
