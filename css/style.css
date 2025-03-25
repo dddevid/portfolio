@@ -37,6 +37,12 @@
     box-sizing: border-box;
 }
 
+/* Text Selection Styles */
+::selection {
+    background-color: var(--primary-color);
+    color: white;
+}
+
 html {
     scroll-behavior: smooth;
 }
