@@ -841,6 +841,12 @@ header .container {
     color: var(--primary-color);
 }
 
+.contact-separator {
+    margin: 0 8px;
+    color: var(--text-color);
+    opacity: 0.6;
+}
+
 .contact-form {
     flex: 1;
 }
@@ -899,6 +905,13 @@ footer {
 .footer-logo p {
     max-width: 300px;
     font-size: 14px;
+}
+
+.location-info {
+    font-size: 13px;
+    margin-top: 10px;
+    color: var(--text-color);
+    opacity: 0.9;
 }
 
 .footer-links h3 {
