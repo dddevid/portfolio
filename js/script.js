@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if user is on desktop
+    const isDesktop = window.innerWidth > 768 && !('ontouchstart' in window);
+    
+    // Apply Noto Color Emoji font for emoji characters on desktop
+    if (isDesktop) {
+        const emojiStyle = document.createElement('style');
+        emojiStyle.textContent = `
+            /* Apply Noto Color Emoji font for emoji characters on desktop */
+            body {
+                font-family: 'Poppins', 'Noto Color Emoji', sans-serif;
+            }
+        `;
+        document.head.appendChild(emojiStyle);
+    }
+    
     // DOM Elements
     const themeToggle = document.querySelector('.theme-toggle');
     const body = document.querySelector('body');
@@ -231,7 +246,7 @@ Best regards,
 ${name}`;
             
             // Create mailto link with encoded email body
-            const mailtoLink = `mailto:devid.rrucaj@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            const mailtoLink = `mailto:rrucajdevid@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
             
             // Open email client
             window.location.href = mailtoLink;
