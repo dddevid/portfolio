@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devid - Developer Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #36BCF7;
+            --bg-primary: #0f0f23;
+            --bg-secondary: #1a1a2e;
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8d1;
+            --text-muted: #6c6c8a;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            --border-radius: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 10px 30px;
+            z-index: 1000;
+            animation: slideDown 1s ease-out;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .lang-selector {
+            margin-left: 20px;
+            padding: 5px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 20px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .lang-selector:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1.5s ease-out;
+        }
+        
+        .welcome-text {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 0.5s forwards;
+        }
+        
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInLeft 1s ease-out 0.8s both;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            animation: slideInRight 1s ease-out 1.1s both;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-out 1.4s both;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 1.7s both;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--accent-color);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        /* About Section */
+        .section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .stat-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+        }
+        
+        .stat-label {
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .skill-category {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            transition: var(--transition);
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .skill-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background: rgba(54, 188, 247, 0.1);
+            color: var(--accent-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(54, 188, 247, 0.3);
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .project-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .tech-tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .project-link:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: var(--gradient);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from { 
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideDown {
+            from { 
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 20px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Scroll animations */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(54, 188, 247, 0.3);
+            border-top: 3px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+    </div>
+    
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <!-- Floating shapes will be added by JavaScript -->
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#home" data-key="nav.home">Home</a></li>
+            <li><a href="#about" data-key="nav.about">About</a></li>
+            <li><a href="#skills" data-key="nav.skills">Skills</a></li>
+            <li><a href="#projects" data-key="nav.projects">Projects</a></li>
+            <li><a href="#contact" data-key="nav.contact">Contact</a></li>
+        </ul>
+        <select class="lang-selector" id="langSelector">
+            <option value="en">🇺🇸 EN</option>
+            <option value="it">🇮🇹 IT</option>
+            <option value="sq">🇦🇱 SQ</option>
+        </select>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="welcome-text" data-key="hero.welcome">Welcome to my digital home</p>
+            <h1>Devid</h1>
+            <p class="subtitle" data-key="hero.subtitle">Italian/Albanian Developer</p>
+            <p class="hero-description" data-key="hero.description">
+                Passionate about creating security tools, web applications, and system utilities. 
+                I focus on practical solutions and optimized performance that solve real-world problems.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary" data-key="hero.viewWork">View My Work</a>
+                <a href="#contact" class="btn btn-secondary" data-key="hero.getInTouch">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="section fade-in-section">
+        <h2 class="section-title" data-key="about.title">About Me</h2>
+        <p class="section-subtitle" data-key="about.subtitle">Get to know me better</p>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <p data-key="about.text1">
+                    I'm a passionate developer with Italian and Albanian heritage, specializing in creating 
+                    security tools, web applications, and system utilities. My journey in programming has 
+                    led me to develop solutions that have helped thousands of users worldwide.
+                </p>
+                <br>
+                <p data-key="about.text2">
+                    Currently focusing on cybersecurity technologies and Rust development, I believe in 
+                    creating tools that not only work efficiently but also provide real value to users. 
+                    My approach combines technical excellence with user-centered design.
+                </p>
+                <br>
+                <p data-key="about.text3">
+                    When I'm not coding, you'll find me exploring new technologies, contributing to open 
+                    source projects, or working on innovative solutions that push the boundaries of what's possible.
+                </p>
+            </div>
+            
+            <div class="about-stats">
+                <div class="stat-card">
+                    <span class="stat-number">6+</span>
+                    <span class="stat-label" data-key="about.stats.projects">Active Projects</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1000+</span>
+                    <span class="stat-label" data-key="about.stats.users">Users Helped</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label" data-key="about.stats.languages">Languages</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label" data-key="about.stats.learning">Always Learning</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="section fade-in-section">
+        <h2 class="section-title" data-key="skills.title">Skills & Technologies</h2>
+        <p class="section-subtitle" data-key="skills.subtitle">Technologies I work with</p>
+        
+        <div class="skills-grid">
+            <div class="skill-category">
+                <i class="fas fa-code skill-icon"></i>
+                <h3 class="skill-title" data-key="skills.backend.title">Backend & Systems</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Python ⭐</span>
+                    <span class="skill-tag">Rust</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">Node.js</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <i class="fas fa-mobile-alt skill-icon"></i>
+                <h3 class="skill-title" data-key="skills.mobile.title">Mobile Development</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Swift ⭐</span>
+                    <span class="skill-tag">Flutter</span>
+                    <span class="skill-tag">Kotlin</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <i class="fas fa-shield-alt skill-icon"></i>
+                <h3 class="skill-title" data-key="skills.security.title">Security & Tools</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Network Analysis</span>
+                    <span class="skill-tag">Web Scraping</span>
+                    <span class="skill-tag">Selenium</span>
+                    <span class="skill-tag">Ollama</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <i class="fas fa-laptop-code skill-icon"></i>
+                <h3 class="skill-title" data-key="skills.frontend.title">Frontend</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">D3.js</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <i class="fas fa-database skill-icon"></i>
+                <h3 class="skill-title" data-key="skills.database.title">Database</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Redis</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <i class="fas fa-cloud skill-icon"></i>
+                <h3 class="skill-title" data-key="skills.devops.title">DevOps & Tools</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Linux</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="section fade-in-section">
+        <h2 class="section-title" data-key="projects.title">Featured Projects</h2>
+        <p class="section-subtitle" data-key="projects.subtitle">Some of my latest work</p>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3 class="project-title">PassChecker</h3>
+                <p class="project-description" data-key="projects.passChecker.description">
+                    A lightweight web tool that checks password strength in real-time, estimates crack time, 
+                    detects common words, and checks for known breaches all securely with client-side processing.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Security</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/dddevid/PassChecker" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h3 class="project-title">WifiDeviceMapper</h3>
+                <p class="project-description" data-key="projects.wifiMapper.description">
+                    Visualize devices connected to the local network through an ARP scan. 
+                    Uses Flask for the backend and interactive visualization with D3.js for the frontend.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">D3.js</span>
+                    <span class="tech-tag">Network</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/dddevid/WifiDeviceMapper" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h3 class="project-title">YTDLPY</h3>
+                <p class="project-description" data-key="projects.ytdlpy.description">
+                    Elegant downloader that allows you to download content from YouTube in either MP4 or MP3 format 
+                    with various quality options. Modern and intuitive interface with real-time download monitoring.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">GUI</span>
+                    <span class="tech-tag">Media</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/dddevid/YTDLPY" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h3 class="project-title">rFetch</h3>
+                <p class="project-description" data-key="projects.rfetch.description">
+                    A fast, customizable system information tool written in Rust with full iOS support 
+                    and an interactive theme creator. Optimized for performance and cross-platform compatibility.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Rust</span>
+                    <span class="tech-tag">System</span>
+                    <span class="tech-tag">iOS</span>
+                    <span class="tech-tag">CLI</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/dddevid/rFetch" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h3 class="project-title">Roblox Freezing Fix</h3>
+                <p class="project-description" data-key="projects.robloxFix.description">
+                    A specialized application designed to fix the freezing issue that affects 84.3% of the Roblox community. 
+                    Provides automated solutions and system optimizations to ensure smooth gameplay.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">System Fix</span>
+                    <span class="tech-tag">Gaming</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/dddevid/Roblox-Freezing-Fix" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h3 class="project-title">AI Web Scraper</h3>
+                <p class="project-description" data-key="projects.aiScraper.description">
+                    An intelligent web scraper using Ollama, BrightData, Selenium and other libraries. 
+                    Combines AI capabilities with web scraping for advanced data extraction and analysis.
+                </p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">AI</span>
+                    <span class="tech-tag">Selenium</span>
+                    <span class="tech-tag">Ollama</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/dddevid/AI-Web-Scraper-Ollama" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section fade-in-section">
+        <h2 class="section-title" data-key="contact.title">Let's Work Together</h2>
+        <p class="section-subtitle" data-key="contact.subtitle">Ready to start your next project?</p>
+        
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4 data-key="contact.email.title">Email</h4>
+                        <p data-key="contact.email.text">Let's discuss your project</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h4 data-key="contact.location.title">Location</h4>
+                        <p data-key="contact.location.text">Italy 🇮🇹 | Albania 🇦🇱</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div>
+                        <h4 data-key="contact.availability.title">Availability</h4>
+                        <p data-key="contact.availability.text">Open for new opportunities</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://github.com/dddevid" class="social-link" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://twitter.com/ddevid_1" class="social-link" target="_blank" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://portfolio.devid.ink" class="social-link" target="_blank" title="Portfolio">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="contact-form-container">
+                <div class="contact-cta">
+                    <h3 data-key="contact.cta.title">Ready to collaborate?</h3>
+                    <p data-key="contact.cta.text">
+                        Whether you need a security tool, web application, or system utility, 
+                        I'm here to help bring your ideas to life with clean, efficient code.
+                    </p>
+                    <div style="margin-top: 30px;">
+                        <a href="mailto:contact@devid.ink" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i> <span data-key="contact.cta.button">Send Message</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Devid. <span data-key="footer.rights">All rights reserved.</span></p>
+        <p data-key="footer.made">Made with ❤️ for the developer community</p>
+    </footer>
+    
+    <script>
+        // Translations
+        const translations = {
+            en: {
+                'nav.home': 'Home',
+                'nav.about': 'About',
+                'nav.skills': 'Skills',
+                'nav.projects': 'Projects',
+                'nav.contact': 'Contact',
+                'hero.welcome': 'Welcome to my digital home',
+                'hero.subtitle': 'Italian/Albanian Developer',
+                'hero.description': 'Passionate about creating security tools, web applications, and system utilities. I focus on practical solutions and optimized performance that solve real-world problems.',
+                'hero.viewWork': 'View My Work',
+                'hero.getInTouch': 'Get In Touch',
+                'about.title': 'About Me',
+                'about.subtitle': 'Get to know me better',
+                'about.text1': "I'm a passionate developer with Italian and Albanian heritage, specializing in creating security tools, web applications, and system utilities. My journey in programming has led me to develop solutions that have helped thousands of users worldwide.",
+                'about.text2': "Currently focusing on cybersecurity technologies and Rust development, I believe in creating tools that not only work efficiently but also provide real value to users. My approach combines technical excellence with user-centered design.",
+                'about.text3': "When I'm not coding, you'll find me exploring new technologies, contributing to open source projects, or working on innovative solutions that push the boundaries of what's possible.",
+                'about.stats.projects': 'Active Projects',
+                'about.stats.users': 'Users Helped',
+                'about.stats.languages': 'Languages',
+                'about.stats.learning': 'Always Learning',
+                'skills.title': 'Skills & Technologies',
+                'skills.subtitle': 'Technologies I work with',
+                'skills.backend.title': 'Backend & Systems',
+                'skills.mobile.title': 'Mobile Development',
+                'skills.security.title': 'Security & Tools',
+                'skills.frontend.title': 'Frontend',
+                'skills.database.title': 'Database',
+                'skills.devops.title': 'DevOps & Tools',
+                'projects.title': 'Featured Projects',
+                'projects.subtitle': 'Some of my latest work',
+                'projects.passChecker.description': 'A lightweight web tool that checks password strength in real-time, estimates crack time, detects common words, and checks for known breaches all securely with client-side processing.',
+                'projects.wifiMapper.description': 'Visualize devices connected to the local network through an ARP scan. Uses Flask for the backend and interactive visualization with D3.js for the frontend.',
+                'projects.ytdlpy.description': 'Elegant downloader that allows you to download content from YouTube in either MP4 or MP3 format with various quality options. Modern and intuitive interface with real-time download monitoring.',
+                'projects.rfetch.description': 'A fast, customizable system information tool written in Rust with full iOS support and an interactive theme creator. Optimized for performance and cross-platform compatibility.',
+                'projects.robloxFix.description': 'A specialized application designed to fix the freezing issue that affects 84.3% of the Roblox community. Provides automated solutions and system optimizations to ensure smooth gameplay.',
+                'projects.aiScraper.description': 'An intelligent web scraper using Ollama, BrightData, Selenium and other libraries. Combines AI capabilities with web scraping for advanced data extraction and analysis.',
+                'contact.title': "Let's Work Together",
+                'contact.subtitle': 'Ready to start your next project?',
+                'contact.email.title': 'Email',
+                'contact.email.text': "Let's discuss your project",
+                'contact.location.title': 'Location',
+                'contact.location.text': 'Italy 🇮🇹 | Albania 🇦🇱',
+                'contact.availability.title': 'Availability',
+                'contact.availability.text': 'Open for new opportunities',
+                'contact.cta.title': 'Ready to collaborate?',
+                'contact.cta.text': 'Whether you need a security tool, web application, or system utility, I\'m here to help bring your ideas to life with clean, efficient code.',
+                'contact.cta.button': 'Send Message',
+                'footer.rights': 'All rights reserved.',
+                'footer.made': 'Made with ❤️ for the developer community'
+            },
+            it: {
+                'nav.home': 'Home',
+                'nav.about': 'Chi Sono',
+                'nav.skills': 'Competenze',
+                'nav.projects': 'Progetti',
+                'nav.contact': 'Contatti',
+                'hero.welcome': 'Benvenuto nella mia casa digitale',
+                'hero.subtitle': 'Sviluppatore Italiano/Albanese',
+                'hero.description': 'Appassionato nella creazione di strumenti di sicurezza, applicazioni web e utilità di sistema. Mi concentro su soluzioni pratiche e prestazioni ottimizzate che risolvono problemi del mondo reale.',
+                'hero.viewWork': 'Vedi i Miei Lavori',
+                'hero.getInTouch': 'Contattami',
+                'about.title': 'Chi Sono',
+                'about.subtitle': 'Conoscimi meglio',
+                'about.text1': 'Sono uno sviluppatore appassionato con origini italiane e albanesi, specializzato nella creazione di strumenti di sicurezza, applicazioni web e utilità di sistema. Il mio percorso nella programmazione mi ha portato a sviluppare soluzioni che hanno aiutato migliaia di utenti in tutto il mondo.',
+                'about.text2': 'Attualmente mi concentro sulle tecnologie di cybersecurity e lo sviluppo in Rust, credo nel creare strumenti che non solo funzionano efficientemente ma forniscono anche valore reale agli utenti. Il mio approccio combina eccellenza tecnica con design centrato sull\'utente.',
+                'about.text3': 'Quando non programmo, mi trovi ad esplorare nuove tecnologie, contribuire a progetti open source, o lavorare su soluzioni innovative che spingono i confini di ciò che è possibile.',
+                'about.stats.projects': 'Progetti Attivi',
+                'about.stats.users': 'Utenti Aiutati',
+                'about.stats.languages': 'Linguaggi',
+                'about.stats.learning': 'Sempre in Apprendimento',
+                'skills.title': 'Competenze & Tecnologie',
+                'skills.subtitle': 'Tecnologie con cui lavoro',
+                'skills.backend.title': 'Backend & Sistemi',
+                'skills.mobile.title': 'Sviluppo Mobile',
+                'skills.security.title': 'Sicurezza & Strumenti',
+                'skills.frontend.title': 'Frontend',
+                'skills.database.title': 'Database',
+                'skills.devops.title': 'DevOps & Strumenti',
+                'projects.title': 'Progetti in Evidenza',
+                'projects.subtitle': 'Alcuni dei miei lavori più recenti',
+                'projects.passChecker.description': 'Uno strumento web leggero che controlla la forza delle password in tempo reale, stima il tempo di crack, rileva parole comuni e verifica le violazioni note tutto in modo sicuro con elaborazione lato client.',
+                'projects.wifiMapper.description': 'Visualizza i dispositivi connessi alla rete locale tramite una scansione ARP. Utilizza Flask per il backend e visualizzazione interattiva con D3.js per il frontend.',
+                'projects.ytdlpy.description': 'Downloader elegante che permette di scaricare contenuti da YouTube in formato MP4 o MP3 con varie opzioni di qualità. Interfaccia moderna e intuitiva con monitoraggio dei download in tempo reale.',
+                'projects.rfetch.description': 'Uno strumento veloce e personalizzabile per informazioni di sistema scritto in Rust con pieno supporto iOS e un creatore di temi interattivo. Ottimizzato per prestazioni e compatibilità cross-platform.',
+                'projects.robloxFix.description': 'Un\'applicazione specializzata progettata per risolvere il problema di freezing che colpisce l\'84.3% della community di Roblox. Fornisce soluzioni automatizzate e ottimizzazioni di sistema per garantire un gameplay fluido.',
+                'projects.aiScraper.description': 'Uno scraper web intelligente che utilizza Ollama, BrightData, Selenium e altre librerie. Combina capacità AI con web scraping per estrazione e analisi avanzate dei dati.',
+                'contact.title': 'Lavoriamo Insieme',
+                'contact.subtitle': 'Pronto per iniziare il tuo prossimo progetto?',
+                'contact.email.title': 'Email',
+                'contact.email.text': 'Discutiamo del tuo progetto',
+                'contact.location.title': 'Posizione',
+                'contact.location.text': 'Italia 🇮🇹 | Albania 🇦🇱',
+                'contact.availability.title': 'Disponibilità',
+                'contact.availability.text': 'Aperto a nuove opportunità',
+                'contact.cta.title': 'Pronto per collaborare?',
+                'contact.cta.text': 'Che tu abbia bisogno di uno strumento di sicurezza, applicazione web o utilità di sistema, sono qui per aiutarti a dare vita alle tue idee con codice pulito ed efficiente.',
+                'contact.cta.button': 'Invia Messaggio',
+                'footer.rights': 'Tutti i diritti riservati.',
+                'footer.made': 'Fatto con ❤️ per la community degli sviluppatori'
+            },
+            sq: {
+                'nav.home': 'Shtëpia',
+                'nav.about': 'Rreth Meje',
+                'nav.skills': 'Aftësitë',
+                'nav.projects': 'Projektet',
+                'nav.contact': 'Kontakti',
+                'hero.welcome': 'Mirë se erdhe në shtëpinë time digjitale',
+                'hero.subtitle': 'Zhvillues Italian/Shqiptar',
+                'hero.description': 'I pasionuar për krijimin e mjeteve të sigurisë, aplikacioneve web dhe utiliteteve të sistemit. Fokusohemi në zgjidhje praktike dhe performancë të optimizuar që zgjidhin problemet e botës reale.',
+                'hero.viewWork': 'Shiko Punën Time',
+                'hero.getInTouch': 'Kontaktoni',
+                'about.title': 'Rreth Meje',
+                'about.subtitle': 'Më njihni më mirë',
+                'about.text1': 'Jam një zhvillues i pasionuar me origjinë italiane dhe shqiptare, i specializuar në krijimin e mjeteve të sigurisë, aplikacioneve web dhe utiliteteve të sistemit. Udhëtimi im në programim më ka çuar të zhvilloj zgjidhje që kanë ndihmuar mijëra përdorues në mbarë botën.',
+                'about.text2': 'Aktualisht po përqendrohem në teknologjitë e cybersecurity dhe zhvillimin në Rust, besoj në krijimin e mjeteve që jo vetëm punojnë me efikasitet por gjithashtu ofrojnë vlerë të vërtetë për përdoruesit. Qasja ime kombinon përsosmërinë teknike me dizajnin e centruar në përdorues.',
+                'about.text3': 'Kur nuk jam duke koduar, do më gjeni duke eksploruar teknologji të reja, duke kontribuar në projekte open source, ose duke punuar në zgjidhje inovative që shtyjnë kufijtë e asaj që është e mundur.',
+                'about.stats.projects': 'Projekte Aktive',
+                'about.stats.users': 'Përdorues të Ndihmuar',
+                'about.stats.languages': 'Gjuhë',
+                'about.stats.learning': 'Gjithmonë Duke Mësuar',
+                'skills.title': 'Aftësitë & Teknologjitë',
+                'skills.subtitle': 'Teknologjitë me të cilat punoj',
+                'skills.backend.title': 'Backend & Sistemet',
+                'skills.mobile.title': 'Zhvillimi Mobile',
+                'skills.security.title': 'Siguria & Mjetet',
+                'skills.frontend.title': 'Frontend',
+                'skills.database.title': 'Bazat e të Dhënave',
+                'skills.devops.title': 'DevOps & Mjetet',
+                'projects.title': 'Projektet e Zgjedhura',
+                'projects.subtitle': 'Disa nga punimet e mia më të fundit',
+                'projects.passChecker.description': 'Një mjet web i lehtë që kontrollon forcën e fjalëkalimit në kohë reale, vlerëson kohën e crack, deton fjalë të zakonshme dhe kontrollon për shkelje të njohura të gjitha në mënyrë të sigurt me përpunim në anën e klientit.',
+                'projects.wifiMapper.description': 'Vizualizo pajisjet e lidhura me rrjetin lokal përmes një skanimi ARP. Përdor Flask për backend dhe vizualizim interaktiv me D3.js për frontend.',
+                'projects.ytdlpy.description': 'Shkarkues elegant që ju lejon të shkarkoni përmbajtje nga YouTube në format MP4 ose MP3 me opsione të ndryshme cilësie. Ndërfaqe moderne dhe intuitive me monitorim shkarkimesh në kohë reale.',
+                'projects.rfetch.description': 'Një mjet i shpejtë dhe i personalizueshëm për informacionin e sistemit i shkruar në Rust me mbështetje të plotë iOS dhe një krijues temash interaktiv. I optimizuar për performancë dhe kompatibilitet cross-platform.',
+                'projects.robloxFix.description': 'Një aplikacion i specializuar i dizajnuar për të zgjidhur problemin e ngrirjes që prek 84.3% të komunitetit Roblox. Ofron zgjidhje të automatizuara dhe optimizime sistemi për të siguruar një gameplay të rrjedhshëm.',
+                'projects.aiScraper.description': 'Një scraper web inteligjent që përdor Ollama, BrightData, Selenium dhe librari të tjera. Kombinon aftësitë AI me web scraping për ekstraktim dhe analizë të avancuar të të dhënave.',
+                'contact.title': 'Le të Punojmë Së Bashku',
+                'contact.subtitle': 'Gati për të filluar projektin tuaj të ardhshëm?',
+                'contact.email.title': 'Email',
+                'contact.email.text': 'Le të diskutojmë projektin tuaj',
+                'contact.location.title': 'Vendndodhja',
+                'contact.location.text': 'Italia 🇮🇹 | Shqipëria 🇦🇱',
+                'contact.availability.title': 'Disponueshmëria',
+                'contact.availability.text': 'I hapur për mundësi të reja',
+                'contact.cta.title': 'Gati për të bashkëpunuar?',
+                'contact.cta.text': 'Nëse keni nevojë për një mjet sigurie, aplikacion web ose utilitet sistemi, jam këtu për t\'ju ndihmoj të jepni jetë ideve tuaja me kod të pastër dhe efikas.',
+                'contact.cta.button': 'Dërgo Mesazh',
+                'footer.rights': 'Të gjitha të drejtat e rezervuara.',
+                'footer.made': 'Bërë me ❤️ për komunitetin e zhvilluesve'
+            }
+        };
+        
+        // Language detection and management
+        function detectLanguage() {
+            const browserLang = navigator.language || navigator.userLanguage;
+            const langCode = browserLang.substring(0, 2);
+            
+            if (langCode === 'it') return 'it';
+            if (langCode === 'sq') return 'sq';
+            return 'en';
+        }
+        
+        function setLanguage(lang) {
+            const elements = document.querySelectorAll('[data-key]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            document.getElementById('langSelector').value = lang;
+            localStorage.setItem('preferred-language', lang);
+        }
+        
+        // Floating shapes animation
+        function createFloatingShapes() {
+            const container = document.querySelector('.bg-animation');
+            const shapes = 15;
+            
+            for (let i = 0; i < shapes; i++) {
+                const shape = document.createElement('div');
+                shape.className = 'floating-shape';
+                
+                const size = Math.random() * 100 + 50;
+                const left = Math.random() * 100;
+                const animationDuration = Math.random() * 10 + 15;
+                const delay = Math.random() * 20;
+                
+                shape.style.width = size + 'px';
+                shape.style.height = size + 'px';
+                shape.style.left = left + '%';
+                shape.style.animationDuration = animationDuration + 's';
+                shape.style.animationDelay = delay + 's';
+                
+                container.appendChild(shape);
+            }
+        }
+        
+        // Scroll animations
+        function handleScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            document.querySelectorAll('.fade-in-section').forEach((section) => {
+                observer.observe(section);
+            });
+        }
+        
+        // Smooth scrolling for navigation
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loading overlay
+            setTimeout(() => {
+                document.getElementById('loadingOverlay').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                }, 500);
+            }, 1500);
+            
+            // Setup language
+            const savedLang = localStorage.getItem('preferred-language') || detectLanguage();
+            setLanguage(savedLang);
+            
+            // Language selector event
+            document.getElementById('langSelector').addEventListener('change', function() {
+                setLanguage(this.value);
+            });
+            
+            // Initialize animations and features
+            createFloatingShapes();
+            handleScrollAnimations();
+            setupSmoothScrolling();
+            
+            // Add typing effect to welcome text
+            const welcomeText = document.querySelector('.welcome-text');
+            const originalText = welcomeText.textContent;
+            welcomeText.textContent = '';
+            
+            setTimeout(() => {
+                let i = 0;
+                const typeInterval = setInterval(() => {
+                    welcomeText.textContent += originalText.charAt(i);
+                    i++;
+                    if (i > originalText.length) {
+                        clearInterval(typeInterval);
+                    }
+                }, 50);
+            }, 2000);
+            
+            // Add particle effect on hover for project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Add click effect for buttons
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+        });
+        
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-content');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
